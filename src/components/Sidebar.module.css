@@ -5,18 +5,19 @@
   }
   
   .widget {
-    background: white;
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
   }
   
   .widget h3 {
     font-size: 1.2rem;
     margin-bottom: 15px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #3498db;
-    color: #2c3e50;
+    border-bottom: 2px solid #3498db;  /* 品牌色保持不变 */
+    color: var(--text-color);
   }
   
   .authorInfo {
@@ -57,10 +58,10 @@
   }
   
   .ctaWidget {
-    background: #e8f4fd;
-    border: 1px solid #bde0fe;
+    background: var(--card-bg);  
+    border: 1px solid var(--border-color);
   }
-  
+
   .subscribeForm {
     display: flex;
     flex-direction: column;
@@ -69,9 +70,11 @@
   
   .subscribeForm input {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 1rem;
+    background: var(--card-bg);
+    color: var(--text-color);
   }
   
   .subscribeForm button {
@@ -99,7 +102,7 @@
   .partners img {
     max-width: 100%;
     height: auto;
-    border: 1px solid #eaecef;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
   }
   
@@ -109,3 +112,5 @@
       gap: 15px;
     }
   }
+
+  

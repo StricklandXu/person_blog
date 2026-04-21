@@ -5,21 +5,22 @@
   }
   
   .article {
-    background: white;
+    background: var(--card-bg);
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
   }
   
   .articleHeader {
     margin-bottom: 15px;
-    border-bottom: 1px solid #eaecef;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 10px;
   }
   
   .articleHeader h2 {
     font-size: 1.8rem;
-    color: #2c3e50;
+    color: var(--text-color);
   }
   
   .articleHeader p {
@@ -104,3 +105,4 @@
       font-size: 1.5rem;
     }
   }
+

@@ -1,17 +1,41 @@
-import React from 'react';
+
 import Header from './components/Header';
 import Nav from './components/Nav';
 import MainContent from './components/MainContent';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import styles from './App.module.css'; // CSS Module 导入
+import React, { useState, useEffect } from 'react'; // 导入 useEffect
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 
 const App: React.FC = () => {
+    // 在顶层组件定义一个状态，管理博客标题
+    const [blogTitle] = useState<string>("我的技术博客");
+    // 定义接收邮箱的处理函数
+    const handleSubscribe = (email: string) => {
+    console.log("App 组件收到了订阅邮箱:", email);
+    // 这里可以添加发送到后端的逻辑
+    alert(`感谢订阅！邮箱 ${email} 已收到。`);
+  };
+  // 内部组件，用于监听主题并修改 body 类名
+const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    // 将主题类名添加到 body 上
+    document.body.className = theme;
+  }, [theme]);
+
+  return <>{children}</>;
+};
   return (
+    
     // 使用 Grid 布局构建页面骨架
+    <ThemeProvider>
+      <ThemeWrapper>
     <div className={styles.pageLayout}>
       {/* 语义化标签：页眉区域 */}
-      <Header />
+      <Header title={blogTitle}/>
       {/* 语义化标签：导航区域 */}
       <Nav />
       {/* 语义化标签：主要内容区域 */}
@@ -20,7 +44,11 @@ const App: React.FC = () => {
       <Sidebar />
       {/* 语义化标签：页脚区域 */}
       {<Footer /> }
+    {/* 将函数作为 prop 传递给 Sidebar */}
+    <Sidebar onSubscribe={handleSubscribe} />
     </div>
+    </ThemeWrapper>
+    </ThemeProvider>
   );
 };
 

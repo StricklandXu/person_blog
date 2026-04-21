@@ -1,64 +1,134 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './MainContent.module.css';
 
+// 类型定义（保持不变）
+interface Article {
+  id: number;
+  title: string;
+  date: string;
+  author: string;
+  contentSections: {
+    title: string;
+    text: string;
+    code?: string;
+  }[];
+  tags: string[];
+}
+
 const MainContent: React.FC = () => {
+  // ✅ 1. 状态管理（替代原来的 const articles）
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // ✅ 2. 生命周期（组件挂载时获取数据）
+  useEffect(() => {
+    console.log("组件已挂载，开始获取文章数据...");
+
+    const fetchData = async () => {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      const mockArticles: Article[] = [
+        {
+          id: 1,
+          title: "理解 JavaScript 闭包",
+          date: "2030-08-10",
+          author: "张三",
+          contentSections: [
+            {
+              title: "什么是闭包？",
+              text: "闭包是指有权访问另一个函数作用域中的变量的函数。"
+            },
+            {
+              title: "实际应用场景",
+              text: "闭包常用于模块化、数据私有化、函数柯里化等场景。",
+              code: `function createCounter() {
+  let count = 0;
+  return function() {
+    count++;
+    return count;
+  };
+}`
+            }
+          ],
+          tags: ["JavaScript", "前端"]
+        },
+        {
+          id: 2,
+          title: "CSS Grid 入门",
+          date: "2030-08-15",
+          author: "张三",
+          contentSections: [
+            {
+              title: "什么是Grid布局？",
+              text: "Grid 是二维布局系统，可同时处理行和列。"
+            }
+          ],
+          tags: ["CSS", "布局"]
+        }
+      ];
+
+      setArticles(mockArticles);
+      setIsLoading(false);
+
+      console.log("文章数据获取完成！");
+    };
+
+    fetchData();
+  }, []);
+
+  // ✅ 3. loading 状态控制（关键点）
+  if (isLoading) {
+    return (
+      <main className={styles.main}>
+        <p>加载文章中...</p>
+      </main>
+    );
+  }
+
+  // ✅ 4. 正常渲染（你原来的 JSX）
   return (
     <main className={styles.main}>
-      {/* 一篇完整的文章，使用 article 包裹 */}
-      <article className={styles.article}>
-        <header className={styles.articleHeader}>
-          <h2>理解 API Key</h2>
-          <p>发布于 <time dateTime="2030-08-10">2030年8月10日</time> by 徐樱桃</p>
-        </header>
+      {articles.map((article) => (
+        <article key={article.id} className={styles.article}>
+          <header className={styles.articleHeader}>
+            <h2>{article.title}</h2>
+            <p>
+              发布于 <time dateTime={article.date}>{article.date}</time> by {article.author}
+            </p>
+          </header>
 
-        {/* 使用 section 划分章节 */}
-        <section className={styles.section}>
-          <h3>什么是 API Key</h3>
-          <p>API Key（应用程序编程接口密钥） 就像是给软件程序使用的“身份证”或“密码”。
+          {article.contentSections.map((section, index) => (
+            <section key={index} className={styles.section}>
+              <h3>{section.title}</h3>
+              <p>{section.text}</p>
+              {section.code && (
+                <pre className={styles.codeBlock}>
+                  {section.code}
+                </pre>
+              )}
+            </section>
+          ))}
 
-当你使用某个服务（比如 ChatGPT、高德地图或天气预报数据）时，对方的服务器需要知道你是谁，以及你是否有权访问这些数据。API Key 就是这个身份凭证。</p>
-        </section>
+          <footer className={styles.articleFooter}>
+            <p>
+              标签:{' '}
+              {article.tags.map((tag, tagIndex) => (
+                <span key={tagIndex}>
+                  <a href="#">{tag}</a>
+                  {tagIndex < article.tags.length - 1 && ', '}
+                </span>
+              ))}
+            </p>
+          </footer>
+        </article>
+      ))}
 
-        <section className={styles.section}>
-          <h3>API Key 的核心作用</h3>
-          <p>身份验证 (Authentication)： 确认“你是你”。它告诉服务器，当前发出请求的开发者或应用程序是合法的。
-
-访问控制 (Authorization)： 确定你的权限。比如，你买的是“白银套餐”，API Key 就会限制你每天只能查询 1000 次数据。
-
-计费与监控： 平台通过 API Key 记录你使用了多少资源，以便月底给你寄账单，或者在你流量异常时进行拦截。</p>
-          <pre className={styles.codeBlock}>
-            {`function createCounter() {
-            let count = 0;
-            return function() {
-                count++;
-                return count;
-            };
-            }`}
-          </pre>
-        </section>
-
-        <footer className={styles.articleFooter}>
-          <p>标签: <a href="#">API</a>, <a href="#">BUG BOUNTY</a></p>
-        </footer>
-      </article>
-
-      {/* 第二个文章示例（可复用） */}
-      <article className={styles.article}>
-        <header className={styles.articleHeader}>
-          <h2>CSS Grid 入门</h2>
-          <p>发布于 <time dateTime="2030-08-15">2030年8月15日</time> by 徐樱桃</p>
-        </header>
-        <section className={styles.section}>
-          <p>Grid 是二维布局系统，可同时处理行和列...（省略具体内容）</p>
-        </section>
-        <footer className={styles.articleFooter}>
-          <p>标签: <a href="#">CSS</a>, <a href="#">布局</a></p>
-        </footer>
-      </article>
-
-      {/* 营销元素：高亮显示的额外 CTA（在文章列表下方） */}
       <div className={styles.highlightCta}>
-        <p><mark className={styles.mark}>🔥 热门教程：</mark> 想要掌握更多BUG BOUNTY技巧？<a href="#">点击这里订阅我的 newsletter</a>，每周推送干货！</p>
+        <p>
+          <mark className={styles.mark}>🔥 热门教程：</mark>
+          想要掌握更多前端技巧？
+          <a href="#">点击这里订阅我的 newsletter</a>，每周推送干货！
+        </p>
       </div>
     </main>
   );
