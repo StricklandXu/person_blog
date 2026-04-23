@@ -40,6 +40,10 @@ jobs:
       # 步骤4：构建项目（执行 package.json 中的 build 脚本）
       - name: Build
         run: npm run build
+      
+      - name: Add 404 redirect for SPA
+        run: cp dist/index.html dist/404.html   # 解决路由刷新404问题
+
 
       # 步骤5：上传构建产物作为 artifact（供后续部署作业使用）
       - name: Upload artifact

@@ -1,116 +1,116 @@
+/* src/components/Sidebar.module.css */
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-  
-  .widget {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border: 1px solid var(--border-color);
-  }
-  
-  .widget h3 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #3498db;  /* 品牌色保持不变 */
-    color: var(--text-color);
-  }
-  
-  .authorInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-  
-  .avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid #3498db;
-  }
-  
-  .socialLinks {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .socialLinks a {
-    display: inline-block;
-    padding: 8px 15px;
-    background: #3498db;
-    color: white;
-    text-decoration: none;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    transition: background 0.2s;
-  }
-  
-  .socialLinks a:hover {
-    background: #2980b9;
-  }
-  
-  .ctaWidget {
-    background: var(--card-bg);  
-    border: 1px solid var(--border-color);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-  .subscribeForm {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .subscribeForm input {
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 1rem;
-    background: var(--card-bg);
-    color: var(--text-color);
-  }
-  
-  .subscribeForm button {
-    padding: 10px;
-    background: #e67e22;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .subscribeForm button:hover {
-    background: #d35400;
-  }
-  
-  .partners {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-  
-  .partners img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-  }
-  
-  /* 移动端调整 */
-  @media (max-width: 768px) {
-    .sidebar {
-      gap: 15px;
-    }
-  }
+.widget {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  position: relative;
+  /* 顶部装饰条 */
+  border-top: 3px solid var(--neon-purple);
+}
 
-  
+.widget h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--neon-cyan);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 8px;
+}
+
+/* 作者信息 */
+.authorInfo {
+  text-align: center;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+/* 社交链接 */
+.socialLinks {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.socialLinks a {
+  display: inline-block;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--neon-purple);
+  color: var(--neon-purple);
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+
+.socialLinks a:hover {
+  background: var(--neon-purple);
+  color: #fff;
+  box-shadow: 0 0 10px var(--neon-purple);
+}
+
+/* 订阅表单 */
+.subscribeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subscribeForm input {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px;
+  font-family: var(--font-body);
+}
+
+.subscribeForm input:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.subscribeForm button {
+  background: var(--neon-cyan);
+  color: #000;
+  border: none;
+  padding: 10px;
+  font-family: var(--font-heading);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.subscribeForm button:hover {
+  background: var(--neon-pink);
+  color: #fff;
+  box-shadow: 0 0 15px var(--neon-pink);
+}
+
+/* 合作伙伴图片 */
+.partners img {
+  border: 1px solid var(--border-color);
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.partners img:hover {
+  filter: grayscale(0%);
+  border-color: var(--neon-cyan);
+}

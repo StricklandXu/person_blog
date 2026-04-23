@@ -1,0 +1,394 @@
+/* src/pages/Pages.module.css */
+
+/* --- 新增：Medium 风格布局类 --- */
+
+.heroSection {
+  text-align: center;
+  margin-bottom: 80px;
+  padding-top: 40px;
+  position: relative;
+}
+
+/* 给主标题添加更强的 Glitch 阴影 */
+.heroSection h1 {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+/* 副标题打字机效果的光标颜色 */
+.subtitle {
+  font-family: 'Fira Code', monospace;
+  color: var(--neon-cyan);
+  font-size: 1.1rem;
+  margin-top: 15px;
+  min-height: 1.5em;
+  text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+/* 自定义 Typewriter 光标样式 */
+.typing-cursor {
+  color: var(--neon-pink);
+  animation: blink 0.7s infinite;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Medium 风格卡片：无边框，无背景，靠排版支撑 */
+.mediumCard {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.mediumCard:hover {
+  transform: translateY(-2px);
+}
+
+.mediumCard h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.mediumCard h2:hover {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(0, 243, 255, 0.3);
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.meta {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  font-size: 0.6rem;
+  vertical-align: middle;
+}
+
+.excerpt {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.tag {
+  background: rgba(0, 243, 255, 0.1);
+  color: var(--neon-cyan);
+  padding: 4px 10px;
+  border-radius: 20px; /* 圆角标签，中和赛博朋克的硬朗 */
+  font-size: 0.8rem;
+  font-family: monospace;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+}
+
+.tag:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 5px var(--neon-cyan);
+}
+
+/* --- 修改：文章详情页 (ArticleDetailPage) --- */
+/* 让它更像 Medium 的阅读体验 */
+
+.articleDetail {
+  background: transparent; /* 去除背景框 */
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  max-width: 100%;
+}
+
+.articleDetail h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  line-height: 1.2;
+  text-align: left; /* Medium 标题左对齐或居中，这里保持左对齐更极客 */
+}
+
+.articleDetail .meta {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  justify-content: flex-start;
+}
+
+.section {
+  margin-bottom: 30px;
+  font-size: 1.2rem; /* 增大正文字号，Medium 风格 */
+  line-height: 1.8;
+  color: var(--text-primary); /* 正文用主色，提高可读性 */
+  font-family: var(--font-body);
+}
+
+.section h3 {
+  font-family: var(--font-heading);
+  color: var(--neon-pink);
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+
+/* 代码块保持赛博朋克风格，但在居中布局中要自适应 */
+/* src/pages/Pages.module.css */
+
+.codeBlock {
+  background: #0d0d0d;
+  color: #00f3ff;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  border-left: 4px solid var(--neon-pink);
+  font-family: 'Fira Code', 'Courier New', monospace;
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+/* 模拟终端窗口的顶部栏 */
+/* src/pages/Pages.module.css */
+
+.codeBlock {
+  background: #0d0d0d;
+  color: #00f3ff;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  border-left: 4px solid var(--neon-pink);
+  font-family: 'Fira Code', 'Courier New', monospace;
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+/* 模拟终端窗口的顶部栏 */
+.codeBlock::before {
+  content: "root@zero-day:~# cat exploit.sh";
+  display: block;
+  background: #1a1a1a;
+  color: #666;
+  padding: 5px 10px;
+  font-size: 0.7rem;
+  margin: -20px -20px 15px -20px;
+  border-bottom: 1px solid #333;
+  font-family: var(--font-heading);
+}
+/* src/pages/Pages.module.css */
+
+.codeBlock {
+  background: #0d0d0d;
+  color: #00f3ff;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  border-left: 4px solid var(--neon-pink);
+  font-family: 'Fira Code', 'Courier New', monospace;
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+/* 模拟终端窗口的顶部栏 */
+.codeBlock::before {
+  content: "root@zero-day:~# cat exploit.sh";
+  display: block;
+  background: #1a1a1a;
+  color: #666;
+  padding: 5px 10px;
+  font-size: 0.7rem;
+  margin: -20px -20px 15px -20px;
+  border-bottom: 1px solid #333;
+  font-family: var(--font-heading);
+}
+
+/* 代码高亮模拟 (简单版，实际建议用 PrismJS) */
+.codeBlock::-webkit-scrollbar {
+  height: 8px;
+}
+.codeBlock::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+.codeBlock::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+/* 代码高亮模拟 (简单版，实际建议用 PrismJS) */
+.codeBlock::-webkit-scrollbar {
+  height: 8px;
+}
+.codeBlock::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+.codeBlock::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+/* --- 保留并微调：Glitch 效果 --- */
+.glitch {
+  position: relative;
+  color: var(--text-primary);
+  /* 确保 glitch 在透明背景上也可见 */
+}
+
+/* ... (保留原有的 glitch 动画定义) ... */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color); /* 关键：使用背景色遮挡，而不是 card-bg */
+}
+
+/* ... (其余动画保持不变) ... */
+
+.newsletterCta {
+  margin-top: 60px;
+  padding: 40px;
+  background: rgba(0, 243, 255, 0.05);
+  border: 1px solid var(--neon-cyan);
+  text-align: center;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%); /* 赛博切角 */
+}
+
+.simpleForm {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.simpleForm input {
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  min-width: 250px;
+}
+
+.simpleForm button {
+  padding: 10px 20px;
+  background: var(--neon-cyan);
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* src/pages/Pages.module.css */
+
+/* ... 原有代码 ... */
+
+/* --- 增强：Medium 风格卡片的赛博化 --- */
+
+.mediumCard {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 30px;
+  transition: all 0.3s ease;
+  position: relative; /* 为伪元素定位做准备 */
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0, 243, 255, 0.02) 100%);
+}
+
+/* 悬停时左侧出现霓虹条 */
+.mediumCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--neon-cyan);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.mediumCard:hover {
+  transform: translateX(5px); /* 轻微右移 */
+  border-bottom-color: var(--neon-cyan);
+}
+
+.mediumCard:hover::before {
+  transform: scaleY(1);
+}
+
+/* 标题悬停时的故障文字效果增强 */
+.mediumCard h2:hover {
+  color: var(--neon-cyan);
+  text-shadow: 2px 0 var(--neon-pink), -2px 0 var(--neon-purple);
+  letter-spacing: 1px;
+}
+
+/* --- 增强：标签样式 --- */
+.tag {
+  background: rgba(0, 243, 255, 0.05);
+  color: var(--neon-cyan);
+  padding: 4px 10px;
+  border-radius: 2px; /* 更硬朗的圆角 */
+  font-size: 0.75rem;
+  font-family: 'Fira Code', monospace; /* 使用等宽字体 */
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  transition: all 0.3s;
+  text-transform: uppercase; /* 大写更极客 */
+}
+
+.tag:hover {
+  background: var(--neon-cyan);
+  color: #000;
+  box-shadow: 0 0 15px var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+/* --- 增强：阅读时间 Meta 信息 --- */
+.meta {
+  font-family: 'Fira Code', monospace; /* 元数据用等宽字体 */
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+.meta span {
+  position: relative;
+}
+
+/* 在作者和日期之间添加一个闪烁的光标效果 */
+.dot {
+  color: var(--neon-pink);
+  animation: blink 1s infinite;
+}

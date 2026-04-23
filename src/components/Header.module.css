@@ -1,29 +1,54 @@
-.header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 30px 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-  }
-  
-  .header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-  }
-  
-  /* 移动端微调 */
-  @media (max-width: 768px) {
-    .header h1 {
-      font-size: 2rem;
-    }
-    .header p {
-      font-size: 1rem;
-    }
-  }
+/* src/components/Header.module.css */
+
+/* 新增：极简 Header */
+.headerMinimal {
+  background: rgba(var(--card-bg-rgb, 18, 18, 18), 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.headerContent {
+  max-width: 720px; /* 与主内容对齐 */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.iconButton {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: transform 0.2s;
+}
+
+.iconButton:hover {
+  transform: scale(1.1);
+  color: var(--neon-cyan);
+}
+
+/* 修改原有的 themeButton 用于 SoundButton 或其他地方，或者简化它 */
+.themeButton {
+  /* 可以保留作为备用，或者删除 */
+  display: none; 
+}

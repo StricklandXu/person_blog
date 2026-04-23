@@ -1,17 +1,87 @@
+/* src/components/Footer.module.css */
+
 .footer {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    text-align: center;
-    padding: 20px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-  }
+  background: #000; /* 保持黑色背景 */
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 40px 20px 30px; /* 增加顶部 padding 给赞助商留空间 */
+  border-top: 2px solid var(--neon-purple);
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* --- 新增：赞助商样式 --- */
+
+.sponsorSection {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-color); /* 分隔线 */
+}
+
+.sponsorTitle {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  font-family: 'Fira Code', monospace;
+}
   
-  .footer a {
-    color: #3498db;
-    text-decoration: none;
-  }
-  
-  .footer a:hover {
-    text-decoration: underline;
-  }
+.sponsorTitle::before {
+  content: "[ ";
+  color: var(--neon-pink);
+}
+.sponsorTitle::after {
+  content: " ]";
+  color: var(--neon-pink);
+}
+
+.sponsorGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sponsorItem {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border: 1px solid #333;
+  background: #000;
+  transition: all 0.3s ease;
+  font-family: 'Fira Code', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 悬停时填充霓虹色 */
+.sponsorItem:hover {
+  color: #000;
+  background: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px var(--neon-cyan);
+  transform: translateY(-2px);
+}
+
+/* 原有版权样式微调 */
+.copyright p {
+  margin: 5px 0;
+}
+
+.footer a {
+  color: var(--neon-cyan);
+  transition: all 0.3s;
+}
+
+.footer a:hover {
+  color: var(--neon-pink);
+  text-shadow: 0 0 5px var(--neon-pink);
+}

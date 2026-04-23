@@ -1,42 +1,51 @@
+/* src/components/Nav.module.css */
 .nav {
-    background-color: #2c3e50;
-    border-radius: 8px;
-    padding: 0 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .navList {
-    display: flex;               /* 使用 Flexbox 水平排列导航项 */
-    list-style: none;
-    gap: 10px;                   /* 项目间距 */
-    flex-wrap: wrap;             /* 移动端换行 */
-  }
-  
-  .navList li a {                
-    display: inline-block;
-    padding: 15px 20px;
-    color: #ecf0f1;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.2s, color 0.2s;
-    border-radius: 4px;
-  }
-  
-  /* 同时定义悬停状态（鼠标指针悬停在链接上）和激活状态（链接拥有 .active 类）的样式 */
-  .navList li a:hover,   
-  .navList li a.active {
-    background-color: #3498db;
-    color: white;
-  }
-  
-  /* 移动端：导航项可能占满宽度 */
-  @media (max-width: 480px) {
-    .navList {
-      flex-direction: column;
-      gap: 5px;
-    }
-    .navList li a {
-      display: block;
-      text-align: center;
-    }
-  }
+  background: rgba(0, 0, 0, 0.8); /* 更深邃的背景 */
+  border-bottom: 1px solid var(--neon-cyan);
+  box-shadow: 0 5px 20px rgba(0, 243, 255, 0.1);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.navList li a {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Hover 和 Active 状态：霓虹发光边框 */
+/* 激活/悬停状态：角落切角效果 */
+.navList li a:hover,
+.navList li a.active {
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.05);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+  /* 切角效果 */
+  clip-path: polygon(
+    10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%
+  );
+}
+
+@media (max-width: 480px) {
+  .navList { gap: 10px; }
+  .navList li a { padding: 6px 10px; font-size: 0.8rem; }
+}

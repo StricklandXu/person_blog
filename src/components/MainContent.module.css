@@ -1,108 +1,160 @@
+/* src/components/MainContent.module.css */
 .main {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .article {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border: 1px solid var(--border-color);
-  }
-  
-  .articleHeader {
-    margin-bottom: 15px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 10px;
-  }
-  
-  .articleHeader h2 {
-    font-size: 1.8rem;
-    color: var(--text-color);
-  }
-  
-  .articleHeader p {
-    color: #7f8c8d;
-    font-size: 0.9rem;
-  }
-  
-  .section {
-    margin-bottom: 20px;
-  }
-  
-  .section h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    color: #34495e;
-  }
-  
-  .section p {
-    margin-bottom: 15px;
-  }
-  
-  .codeBlock {
-    background: #f4f6f9;
-    padding: 15px;
-    border-radius: 6px;
-    overflow-x: auto;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    border-left: 4px solid #3498db;
-  }
-  
-  .articleFooter {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px dashed #eaecef;
-    font-size: 0.9rem;
-  }
-  
-  .articleFooter a {
-    color: #3498db;
-    text-decoration: none;
-  }
-  
-  .articleFooter a:hover {
-    text-decoration: underline;
-  }
-  
-  /* 营销高亮 CTA 区域 */
-  .highlightCta {
-    background: #fef9e7;
-    border: 1px solid #f1c40f;
-    border-radius: 8px;
-    padding: 15px 20px;
-    font-size: 1.1rem;
-    text-align: center;
-  }
-  
-  .mark {
-    background: #f1c40f;
-    color: #2c3e50;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-  
-  .highlightCta a {
-    color: #e67e22;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .highlightCta a:hover {
-    text-decoration: underline;
-  }
-  
-  /* 移动端调整 */
-  @media (max-width: 768px) {
-    .article {
-      padding: 15px;
-    }
-    .articleHeader h2 {
-      font-size: 1.5rem;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
+.article {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 25px;
+  /* 切角效果 */
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% calc(100% - 15px), 
+    calc(100% - 15px) 100%, 
+    0 100%
+  );
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s;
+}
+
+.article:hover {
+  transform: translateY(-2px);
+  border-color: var(--neon-cyan);
+}
+
+.articleHeader {
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.articleHeader h2 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--text-primary);
+}
+
+.articleHeader p {
+  color: var(--neon-purple);
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  font-family: var(--font-heading);
+  color: var(--neon-pink);
+  margin-bottom: 10px;
+}
+
+.codeBlock {
+  background: #1a1a1a;
+  color: #00f3ff;
+  padding: 15px;
+  border-left: 4px solid var(--neon-cyan);
+  font-family: 'Courier New', monospace;
+  overflow-x: auto;
+}
+
+.articleFooter {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-color);
+  font-size: 0.9rem;
+}
+
+.articleFooter a {
+  color: var(--neon-cyan);
+}
+
+.highlightCta {
+  background: rgba(0, 243, 255, 0.05);
+  border: 1px solid var(--neon-cyan);
+  padding: 15px;
+  text-align: center;
+}
+
+.mark {
+  background: var(--neon-pink);
+  color: #fff;
+  padding: 2px 5px;
+}
+
+/* src/components/MainContent.module.css - 追加到文件末尾 */
+
+/* 赛博朋克加载器容器 */
+.cyberLoader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 扫描线效果 */
+.scanner {
+  width: 100%;
+  height: 2px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: scan 1.5s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* 加载文字 */
+.loadingText {
+  font-family: var(--font-heading);
+  color: var(--neon-cyan);
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* 进度条背景 */
+.progressBar {
+  width: 200px;
+  height: 4px;
+  background: #333;
+  border: 1px solid var(--neon-purple);
+  position: relative;
+}
+
+/* 进度条填充 */
+.progressFill {
+  height: 100%;
+  background: var(--neon-pink);
+  width: 0%;
+  box-shadow: 0 0 10px var(--neon-pink);
+  animation: loadProgress 2s ease-out forwards;
+}
+
+@keyframes loadProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
